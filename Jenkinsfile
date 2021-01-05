@@ -1,5 +1,5 @@
 timestamps {
-node {
+node('slave1-Redhat') {
     def mavenHome = tool name:"maven3.6.3"
     
     properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: '']])
@@ -14,7 +14,7 @@ node {
         sh "${mavenHome}/bin/mvn clean package"
     }
     
-    
+    /*
     stage ('SonarQubeReport') {
         
         sh "${mavenHome}/bin/mvn sonar:sonar"
@@ -34,5 +34,6 @@ node {
     stage ('SendNotifications') {
         mail bcc: '', body: 'the corresponding build status is shared.', cc: '', from: '', replyTo: '', subject: 'This is a Build Notification', to: 'ppgdevops@gmail.com'
     }
+    */
 }
 }
