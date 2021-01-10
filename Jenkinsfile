@@ -2,17 +2,18 @@ timestamps {
 node('slave1-Redhat') {
     def mavenHome = tool name:"maven3.6.3"
     
-    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: '']])
+   // properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: '']])
     
 
     stage ('CodecheckOut') {
         git branch: 'development', credentialsId: 'e668a2c0-17f6-46e5-91c9-92febc884bdf', url: 'https://github.com/ppg-devops01/maven-web-application.git'
     }
     
-    stage ('build') {
+ /*   stage ('build') {
         
         sh "${mavenHome}/bin/mvn clean package"
     }
+    */
     
     /*
     stage ('SonarQubeReport') {
